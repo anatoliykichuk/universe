@@ -11,5 +11,11 @@ class PictureOfTheDay(
     private val url: String,
     private val hdurl: String
 ) {
-
+    fun getUrl(): String {
+        return if (url.isEmpty()) {
+            hdurl
+        } else {
+            url
+        }
+    }
 }

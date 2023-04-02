@@ -15,21 +15,19 @@ class PictureOfTheDayLoader {
     }
 
     private fun loadSafety(): PictureOfTheDay? {
+        var pictureOfTheDay: PictureOfTheDay? = null
+
         val pictureOfTheDayApi = RetrofitClient
             .getClient()
             .create(PictureOfTheDayApi::class.java)
             .getPicture(BuildConfig.NASA_API_KEY)
             .execute().let {
                 if (it.isSuccessful) {
-                    val pictureOfTheDayDto = it.body()
-
-                    pictureOfTheDayDto?.let { pictureOfTheDayDto ->
-                        PictureOfTheDayConverter.convertFromDto(
-                            pictureOfTheDayDto
-                        )
-                    }
+                    val pictureOfTheDayDto = it.body()!!
+                    pictureOfTheDay = PictureOfTheDayConverter.convertFromDto(
+                            pictureOfTheDayDto)
                 }
             }
-        return null
+        return pictureOfTheDay
     }
 }

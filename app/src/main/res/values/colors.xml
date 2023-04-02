@@ -8,4 +8,5 @@
     <color name="colorAccent">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="color_gray">#66000000</color>
+    <color name="loading_background">#80FFFFFF</color>
 </resources>
