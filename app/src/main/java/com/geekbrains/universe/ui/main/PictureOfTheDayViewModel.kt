@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.geekbrains.universe.data.net.Repository
 import com.geekbrains.universe.ui.AppState
 
-class PictureOfTheDayViewModel : ViewModel() {
-
+class PictureOfTheDayViewModel(
     private val liveData: MutableLiveData<AppState> = MutableLiveData()
+) : ViewModel() {
+
     private var dataPosted: Boolean = false
 
     fun getLiveFata(): LiveData<AppState> {
@@ -16,6 +17,8 @@ class PictureOfTheDayViewModel : ViewModel() {
     }
 
     fun getPicture() {
+        liveData.value = AppState.Loading
+
         if (dataPosted) {
             return
         }
