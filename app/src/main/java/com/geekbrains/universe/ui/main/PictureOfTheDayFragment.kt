@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -39,13 +40,16 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val titleView = R.id.bottom_sheet_description_header as TextView
+        val descriptionView = R.id.bottom_sheet_description as TextView
+
         viewModel.getLiveFata().observe(viewLifecycleOwner) {
-            renderData(it)
+            renderData(it, titleView, descriptionView)
         }
 
         viewModel.getPicture()
 
-        setBottomSheetBehavior(view.findViewById( R.id.bottom_sheet_container))
+        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
 
     override fun onDestroyView() {
@@ -59,13 +63,16 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    private fun renderData(appState: AppState) {
+    private fun renderData(appState: AppState, titleView: TextView, descriptionView: TextView) {
         when (appState) {
             is AppState.Success -> {
                 binding.loadingProcess.visibility = View.GONE
 
                 appState.pictureOfTheDay?.let {
-                    binding.imageView.load(it.getUrl())
+                    binding.imageView.load(it.getUrlFilled())
+
+                    titleView.text = it.title
+                    descriptionView.text = it.explanation
                 }
             }
 
