@@ -40,8 +40,8 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val titleView = R.id.bottom_sheet_description_header as TextView
-        val descriptionView = R.id.bottom_sheet_description as TextView
+        val titleView = view.findViewById<TextView>(R.id.bottom_sheet_description_header)
+        val descriptionView = view.findViewById<TextView>(R.id.bottom_sheet_description)
 
         viewModel.getLiveFata().observe(viewLifecycleOwner) {
             renderData(it, titleView, descriptionView)
