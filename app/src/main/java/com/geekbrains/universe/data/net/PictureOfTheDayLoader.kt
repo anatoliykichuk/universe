@@ -1,5 +1,6 @@
 package com.geekbrains.universe.data.net
 
+import android.widget.Toast
 import com.geekbrains.universe.BuildConfig
 import com.geekbrains.universe.domain.PictureOfTheDay
 
@@ -26,6 +27,8 @@ class PictureOfTheDayLoader {
                     val pictureOfTheDayDto = it.body()!!
                     pictureOfTheDay = PictureOfTheDayConverter.convertFromDto(
                             pictureOfTheDayDto)
+                } else {
+                    val a = 0
                 }
             }
         return pictureOfTheDay

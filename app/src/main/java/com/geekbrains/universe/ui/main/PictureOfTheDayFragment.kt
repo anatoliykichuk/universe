@@ -1,5 +1,7 @@
 package com.geekbrains.univerce.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,7 @@ import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -48,6 +51,14 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         viewModel.getPicture()
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                val wikipediaUriTemplate =
+                    "https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}"
+                data = Uri.parse(wikipediaUriTemplate)
+            })
+        }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
