@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="colorAccent">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="color_gray">#66000000</color>
+    <color name="loading_background">#80FFFFFF</color>
+    <color name="bottom_sheet_background">#f6f6fa</color>
+    <color name="bottom_sheet_line_background">#663b4351</color>
+    <color name="bottom_sheet_description_header_text_color">#000</color>
 </resources>
