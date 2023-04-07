@@ -1,14 +1,14 @@
 package com.geekbrains.universe.data.net
 
 import com.geekbrains.universe.domain.PictureOfTheDay
-import java.util.*
+import java.time.LocalDate
 
 const val VIDEO_MEDIA_TYPE = "video"
 
 object PictureOfTheDayConverter {
     fun convertFromDto(pictureOfTheDayDto: PictureOfTheDayDto): PictureOfTheDay {
         return PictureOfTheDay(
-            date = Date(pictureOfTheDayDto.date),
+            date = LocalDate.parse(pictureOfTheDayDto.date),
             title = pictureOfTheDayDto.title,
             explanation = pictureOfTheDayDto.explanation,
             mediaType = mediaType(pictureOfTheDayDto.mediaType),

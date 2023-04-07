@@ -1,10 +1,10 @@
 package com.geekbrains.universe.domain
 
 import com.geekbrains.universe.data.net.MediaType
-import java.util.*
+import java.time.LocalDate
 
 class PictureOfTheDay(
-    val date: Date,
+    val date: LocalDate,
     val title: String,
     val explanation: String,
     val mediaType: MediaType,

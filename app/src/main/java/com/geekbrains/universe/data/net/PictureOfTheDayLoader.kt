@@ -1,6 +1,5 @@
 package com.geekbrains.universe.data.net
 
-import android.widget.Toast
 import com.geekbrains.universe.BuildConfig
 import com.geekbrains.universe.domain.PictureOfTheDay
 
@@ -18,7 +17,7 @@ class PictureOfTheDayLoader {
     private fun loadSafety(): PictureOfTheDay? {
         var pictureOfTheDay: PictureOfTheDay? = null
 
-        val pictureOfTheDayApi = RetrofitClient
+        RetrofitClient
             .getClient()
             .create(PictureOfTheDayApi::class.java)
             .getPicture(BuildConfig.NASA_API_KEY)
@@ -26,9 +25,8 @@ class PictureOfTheDayLoader {
                 if (it.isSuccessful) {
                     val pictureOfTheDayDto = it.body()!!
                     pictureOfTheDay = PictureOfTheDayConverter.convertFromDto(
-                            pictureOfTheDayDto)
-                } else {
-                    val a = 0
+                        pictureOfTheDayDto
+                    )
                 }
             }
         return pictureOfTheDay
