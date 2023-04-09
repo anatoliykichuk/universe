@@ -5,22 +5,22 @@ import com.geekbrains.universe.domain.PictureOfTheDay
 
 class PictureOfTheDayLoader {
 
-    fun load(): PictureOfTheDay? {
+    fun load(date: String): PictureOfTheDay? {
         try {
-            return loadSafety()
+            return loadSafety(date)
         } catch (e: Throwable) {
             e.printStackTrace()
         }
         return null
     }
 
-    private fun loadSafety(): PictureOfTheDay? {
+    private fun loadSafety(date: String): PictureOfTheDay? {
         var pictureOfTheDay: PictureOfTheDay? = null
 
         RetrofitClient
             .getClient()
             .create(PictureOfTheDayApi::class.java)
-            .getPicture(BuildConfig.NASA_API_KEY)
+            .getPicture(BuildConfig.NASA_API_KEY, date)
             .execute().let {
                 if (it.isSuccessful) {
                     val pictureOfTheDayDto = it.body()!!

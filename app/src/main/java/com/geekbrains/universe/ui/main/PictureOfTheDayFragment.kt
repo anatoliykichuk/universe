@@ -16,6 +16,7 @@ import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.time.LocalDate
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -31,9 +32,10 @@ class PictureOfTheDayFragment : Fragment() {
     private val viewModel: PictureOfTheDayViewModel by viewModels()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
+    private var selectedDate: String = today()
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
 
@@ -50,7 +52,7 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(it, titleView, descriptionView)
         }
 
-        viewModel.getPicture()
+        viewModel.getPicture(selectedDate)
 
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -58,6 +60,21 @@ class PictureOfTheDayFragment : Fragment() {
                     "https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}"
                 data = Uri.parse(wikipediaUriTemplate)
             })
+        }
+
+        binding.today.setOnClickListener {
+            selectedDate = today()
+            viewModel.getPicture(selectedDate)
+        }
+
+        binding.yesterday.setOnClickListener {
+            selectedDate = yesterday()
+            viewModel.getPicture(selectedDate)
+        }
+
+        binding.dayBeforeYesterday.setOnClickListener {
+            selectedDate = dayBeforeYesterday()
+            viewModel.getPicture(selectedDate)
         }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -73,6 +90,27 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
+
+    private fun today(): String {
+        return LocalDate.now().toString()
+    }
+
+    private fun yesterday(): String {
+        val today = LocalDate.now()
+        val yesterday = LocalDate.of(
+            today.year, today.month, today.dayOfMonth - 1
+        )
+        return yesterday.toString()
+    }
+
+    private fun dayBeforeYesterday(): String {
+        val today = LocalDate.now()
+        val dayBeforeYesterday = LocalDate.of(
+            today.year, today.month, today.dayOfMonth - 2
+        )
+        return dayBeforeYesterday.toString()
+    }
+
 
     private fun renderData(appState: AppState, titleView: TextView, descriptionView: TextView) {
         when (appState) {
