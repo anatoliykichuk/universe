@@ -17,8 +17,6 @@ import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.geekbrains.universe.ui.utils.PicturesDay
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import java.time.LocalDate
-
 
 class PictureOfTheDayFragment : Fragment() {
 
