@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setTheme(R.style.Theme_Universe_Alternative)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)

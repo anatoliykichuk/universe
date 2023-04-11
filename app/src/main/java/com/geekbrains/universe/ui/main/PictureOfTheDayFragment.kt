@@ -51,10 +51,10 @@ class PictureOfTheDayFragment : Fragment() {
 
         viewModel.getPicture(PicturesDay.today())
 
-        binding.inputLayout.setEndIconOnClickListener {
+        binding.searchTextLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 val wikipediaUriTemplate =
-                    "https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}"
+                    "https://en.wikipedia.org/wiki/${binding.searchText.text.toString()}"
                 data = Uri.parse(wikipediaUriTemplate)
             })
         }
