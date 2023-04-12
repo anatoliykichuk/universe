@@ -8,28 +8,17 @@
     <fragment
         android:id="@+id/MainFragment"
         android:name="com.geekbrains.univerce.ui.main.PictureOfTheDayFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_picture_of_the_day" />
-
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.geekbrains.universe.ui.pages.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:label="@string/main_fragment_label"
+        tools:layout="@layout/fragment_picture_of_the_day">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_MainFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.geekbrains.universe.ui.pages.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        android:id="@+id/SettingsFragment"
+        android:name="com.geekbrains.universe.ui.pages.SettingsFragment"
+        android:label="@string/settings_fragment_label"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

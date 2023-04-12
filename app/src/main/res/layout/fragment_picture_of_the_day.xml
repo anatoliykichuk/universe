@@ -80,6 +80,22 @@
 
     <include layout="@layout/bottom_sheet" />
 
+    <!--com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:hideOnScroll="true"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:navigationIcon="@drawable/ic_hamburger_menu_bar"/-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/action_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_settings"/>
+
     <FrameLayout
         android:id="@+id/loading_process"
         android:layout_width="match_parent"
@@ -96,7 +112,9 @@
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/action_settings"/>
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

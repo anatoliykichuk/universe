@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
@@ -69,6 +70,10 @@ class PictureOfTheDayFragment : Fragment() {
 
         binding.dayBeforeYesterday.setOnClickListener {
             viewModel.getPicture(PicturesDay.dayBeforeYesterday())
+        }
+
+        binding.actionSettings.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_SettingsFragment)
         }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
