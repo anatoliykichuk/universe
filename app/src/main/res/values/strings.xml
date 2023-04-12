@@ -6,14 +6,14 @@
     <string name="search_wiki">Find on Wikipedia</string>
     <string name="wiki_helper_text">Look up the term on wikipedia</string>
 
-    <!-- Strings used for fragments for navigation -->
-    <string name="main_fragment_label">Picture of the day</string>
-    <string name="settings_fragment_label">Picture of the day</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
     <string name="day_before_yesterday">Day before yesterday</string>
     <string name="yesterday">Yesterday</string>
     <string name="today">Today</string>
+    <string name="moon_theme_title">moon theme</string>
+    <string name="martian_theme_title">martian theme</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="main_fragment_label">Picture of the day</string>
+    <string name="settings_fragment_label">Theme options</string>
 
 </resources>

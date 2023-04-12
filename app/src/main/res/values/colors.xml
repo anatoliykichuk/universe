@@ -13,7 +13,7 @@
     <color name="bottom_sheet_line_background">#663b4351</color>
     <color name="bottom_sheet_description_header_text_color">#000</color>
 
-    <!--palette for alternative theme-->
+    <!-- palette for alternative theme -->
     <color name="universe_light_primary">#6750A4</color>
     <color name="universe_light_primary_container">#EADDFF</color>
     <color name="universe_light_secondary">#625B71</color>
