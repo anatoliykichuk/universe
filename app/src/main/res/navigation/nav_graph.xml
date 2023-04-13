@@ -21,4 +21,5 @@
         android:name="com.geekbrains.universe.ui.pages.SettingsFragment"
         android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings" />
+
 </navigation>
