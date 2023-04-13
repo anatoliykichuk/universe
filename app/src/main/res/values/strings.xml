@@ -14,6 +14,7 @@
 
     <!-- Strings used for fragments for navigation -->
     <string name="main_fragment_label">Picture of the day</string>
-    <string name="settings_fragment_label">Theme options</string>
+    <string name="settings_fragment_label">Settings</string>
+    <string name="theme_options_title">Theme options</string>
 
 </resources>

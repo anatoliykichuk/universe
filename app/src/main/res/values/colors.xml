@@ -13,11 +13,20 @@
     <color name="bottom_sheet_line_background">#663b4351</color>
     <color name="bottom_sheet_description_header_text_color">#000</color>
 
-    <!-- palette for alternative theme -->
-    <color name="universe_light_primary">#6750A4</color>
-    <color name="universe_light_primary_container">#EADDFF</color>
-    <color name="universe_light_secondary">#625B71</color>
-    <color name="universe_light_secondary_container">#E8DEF8</color>
-    <color name="universe_light_tertiary">#7D5260</color>
-    <color name="universe_light_tertiary_container">#FFD8E4</color>
+    <!-- palette for moon theme -->
+    <color name="moon_light_primary">#FF9800</color>
+    <color name="moon_light_primary_container">#F5F5F5</color>
+    <color name="moon_light_secondary">#212121</color>
+    <color name="moon_light_secondary_container">#FAFAFA</color>
+    <color name="moon_light_tertiary">#757575</color>
+    <color name="moon_light_tertiary_container">#F5F5F5</color>
+
+    <!-- palette for martian theme -->
+    <color name="martian_light_primary">#E91E63</color>
+    <color name="martian_light_primary_container">#F5F5F5</color>
+    <color name="martian_light_secondary">#212121</color>
+    <color name="martian_light_secondary_container">#FAFAFA</color>
+    <color name="martian_light_tertiary">#757575</color>
+    <color name="martian_light_tertiary_container">#F5F5F5</color>
+
 </resources>

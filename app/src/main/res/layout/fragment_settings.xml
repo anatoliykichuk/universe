@@ -15,33 +15,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/theme_options"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_options_title"
+                android:gravity="center_horizontal"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:singleSelection="true">
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/moon_theme"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:text="@string/moon_theme_title"
-                    android:textAlignment="center" />
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/theme_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:singleSelection="true">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/martian_theme"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:text="@string/martian_theme_title"
-                    android:textAlignment="center" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/moon_theme"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:text="@string/moon_theme_title"
+                        android:textAlignment="center"
+                        app:chipBackgroundColor="@color/moon_light_primary" />
 
-            </com.google.android.material.chip.ChipGroup>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/martian_theme"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:text="@string/martian_theme_title"
+                        android:textAlignment="center"
+                        app:chipBackgroundColor="@color/martian_light_primary" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

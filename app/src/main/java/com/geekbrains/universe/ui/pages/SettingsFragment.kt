@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geekbrains.universe.databinding.FragmentSettingsBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
