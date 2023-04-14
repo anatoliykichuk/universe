@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="@dimen/theme_options_container_padding">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -41,16 +41,16 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/moon_theme"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="@dimen/theme_chip_width"
+                        android:layout_height="@dimen/theme_chip_height"
                         android:text="@string/moon_theme_title"
                         android:textAlignment="center"
                         app:chipBackgroundColor="@color/moon_light_primary" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/martian_theme"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="@dimen/theme_chip_width"
+                        android:layout_height="@dimen/theme_chip_height"
                         android:text="@string/martian_theme_title"
                         android:textAlignment="center"
                         app:chipBackgroundColor="@color/martian_light_primary" />
