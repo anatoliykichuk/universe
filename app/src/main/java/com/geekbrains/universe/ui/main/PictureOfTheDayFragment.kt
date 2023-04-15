@@ -10,13 +10,14 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
+import com.geekbrains.universe.ui.utils.PicturesDay
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -32,8 +33,7 @@ class PictureOfTheDayFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
 
@@ -50,14 +50,30 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(it, titleView, descriptionView)
         }
 
-        viewModel.getPicture()
+        viewModel.getPicture(PicturesDay.today())
 
-        binding.inputLayout.setEndIconOnClickListener {
+        binding.searchTextLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 val wikipediaUriTemplate =
-                    "https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}"
+                    "https://en.wikipedia.org/wiki/${binding.searchText.text.toString()}"
                 data = Uri.parse(wikipediaUriTemplate)
             })
+        }
+
+        binding.today.setOnClickListener {
+            viewModel.getPicture(PicturesDay.today())
+        }
+
+        binding.yesterday.setOnClickListener {
+            viewModel.getPicture(PicturesDay.yesterday())
+        }
+
+        binding.dayBeforeYesterday.setOnClickListener {
+            viewModel.getPicture(PicturesDay.dayBeforeYesterday())
+        }
+
+        binding.actionSettings.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_SettingsFragment)
         }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))

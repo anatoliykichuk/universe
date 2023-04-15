@@ -6,4 +6,43 @@
     </style>
 
     <style name="Theme.Universe" parent="Base.Theme.Universe" />
+
+    <style name="Theme.Moon" parent="Base.Theme.Universe">
+
+        <item name="colorPrimary" type="color">@color/moon_light_primary</item>
+        <item name="colorPrimaryContainer" type="color">
+            @color/moon_light_primary_container
+        </item>
+        <item name="colorSecondary" type="color">@color/moon_light_secondary</item>
+        <item name="colorSecondaryContainer" type="color">
+            @color/moon_light_secondary_container
+        </item>
+        <item name="colorTertiary" type="color">@color/moon_light_tertiary</item>
+        <item name="colorTertiaryContainer" type="color">
+            @color/moon_light_tertiary_container
+        </item>
+
+    </style>
+
+    <style name="Theme.Martian" parent="Base.Theme.Universe">
+
+        <item name="colorPrimary" type="color">@color/martian_light_primary</item>
+        <item name="colorPrimaryContainer" type="color">
+            @color/martian_light_primary_container
+        </item>
+        <item name="colorSecondary" type="color">@color/martian_light_secondary</item>
+        <item name="colorSecondaryContainer" type="color">
+            @color/martian_light_secondary_container
+        </item>
+        <item name="colorTertiary" type="color">@color/martian_light_tertiary</item>
+        <item name="colorTertiaryContainer" type="color">
+            @color/martian_light_tertiary_container
+        </item>
+
+    </style>
+
+    <style name="chipStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

@@ -9,4 +9,12 @@
     <dimen name="bottom_sheet_description_header_end">10dp</dimen>
     <dimen name="bottom_sheet_description_padding_start">10dp</dimen>
     <dimen name="bottom_sheet_description_padding_end">10dp</dimen>
+    <dimen name="input_layout_width">0dp</dimen>
+    <dimen name="floating_action_button_margin_bottom">60dp</dimen>
+    <dimen name="floating_action_button_margin_end">15dp</dimen>
+    <dimen name="nav_host_content_width">0dp</dimen>
+    <dimen name="nav_host_content_height">0dp</dimen>
+    <dimen name="theme_options_container_padding">16dp</dimen>
+    <dimen name="theme_chip_width">150dp</dimen>
+    <dimen name="theme_chip_height">150dp</dimen>
 </resources>

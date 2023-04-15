@@ -16,7 +16,7 @@ class PictureOfTheDayViewModel(
         return liveData
     }
 
-    fun getPicture() {
+    fun getPicture(date: String) {
         liveData.value = AppState.Loading
 
         if (dataPosted) {
@@ -25,7 +25,7 @@ class PictureOfTheDayViewModel(
 
         Thread {
             liveData.postValue(
-                AppState.Success(Repository().getPictureFromNet())
+                AppState.Success(Repository().getPictureFromNet(date))
             )
             dataPosted = true
         }.start()

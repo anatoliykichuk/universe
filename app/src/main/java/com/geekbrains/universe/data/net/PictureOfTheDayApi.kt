@@ -8,5 +8,8 @@ const val END_POINT = "planetary/apod"
 
 interface PictureOfTheDayApi {
     @GET(END_POINT)
-    fun getPicture(@Query("api_key") apiKey: String): Call<PictureOfTheDayDto>
+    fun getPicture(
+        @Query("api_key") apiKey: String,
+        @Query("date") date: String
+    ): Call<PictureOfTheDayDto>
 }
