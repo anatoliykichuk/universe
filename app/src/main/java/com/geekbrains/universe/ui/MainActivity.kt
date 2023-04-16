@@ -1,4 +1,4 @@
-package com.geekbrains.universe
+package com.geekbrains.universe.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
