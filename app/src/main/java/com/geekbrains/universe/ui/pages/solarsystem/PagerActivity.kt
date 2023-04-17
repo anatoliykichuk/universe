@@ -2,7 +2,6 @@ package com.geekbrains.universe.ui.pages.solarsystem
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.ActivityPagerBinding
 
 class PagerActivity : AppCompatActivity() {
@@ -15,6 +14,6 @@ class PagerActivity : AppCompatActivity() {
         binding = ActivityPagerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //binding.pager.adapter = PagerAdapter(this)
+        binding.pager.adapter = PagerAdapter(this)
     }
 }

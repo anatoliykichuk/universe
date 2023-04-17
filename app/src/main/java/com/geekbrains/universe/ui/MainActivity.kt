@@ -1,11 +1,10 @@
 package com.geekbrains.universe.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,7 +12,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.ActivityMainBinding
-import com.google.android.material.bottomappbar.BottomAppBar
+import com.geekbrains.universe.ui.pages.solarsystem.PagerActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,8 +41,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_solar_system -> true
-            R.id.action_settings -> true
+            R.id.action_solar_system -> {
+                goToSolarSystemPages()
+                true
+            }
+            R.id.action_settings -> {
+                goToSettingsPage()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -52,5 +57,14 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    private fun goToSolarSystemPages() {
+        startActivity(Intent(this, PagerActivity::class.java))
+    }
+
+    private fun goToSettingsPage() {
+        findNavController(R.id.nav_host_fragment_content_main)
+            .navigate(R.id.action_MainFragment_to_SettingsFragment)
     }
 }
