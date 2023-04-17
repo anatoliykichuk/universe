@@ -75,7 +75,6 @@ class PictureOfTheDayFragment : Fragment() {
             viewModel.getPicture(PicturesDay.dayBeforeYesterday())
         }
 
-        setBottomAppBar(view)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
 
@@ -83,13 +82,6 @@ class PictureOfTheDayFragment : Fragment() {
         super.onDestroyView()
 
         _binding = null
-    }
-
-    private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
-        context.setSupportActionBar(view.findViewById(R.id.app_bar))
-        setHasOptionsMenu(true)
-        binding.appBar.replaceMenu(R.menu.menu_main)
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
