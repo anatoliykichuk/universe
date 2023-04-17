@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,8 +16,10 @@ import coil.load
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
+import com.geekbrains.universe.ui.MainActivity
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.geekbrains.universe.ui.utils.PicturesDay
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class PictureOfTheDayFragment : Fragment() {
@@ -72,10 +75,7 @@ class PictureOfTheDayFragment : Fragment() {
             viewModel.getPicture(PicturesDay.dayBeforeYesterday())
         }
 
-        binding.actionSettings.setOnClickListener {
-            findNavController().navigate(R.id.action_MainFragment_to_SettingsFragment)
-        }
-
+        setBottomAppBar(view)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
 
@@ -83,6 +83,13 @@ class PictureOfTheDayFragment : Fragment() {
         super.onDestroyView()
 
         _binding = null
+    }
+
+    private fun setBottomAppBar(view: View) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.app_bar))
+        setHasOptionsMenu(true)
+        binding.appBar.replaceMenu(R.menu.menu_main)
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {

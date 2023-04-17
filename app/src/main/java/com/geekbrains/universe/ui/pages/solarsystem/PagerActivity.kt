@@ -13,8 +13,8 @@ class PagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityPagerBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_pager)
+        setContentView(binding.root)
 
-        binding.pager.adapter = PagerAdapter(this)
+        //binding.pager.adapter = PagerAdapter(this)
     }
 }

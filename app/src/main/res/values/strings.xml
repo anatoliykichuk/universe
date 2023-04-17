@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">universe</string>
     <string name="action_settings">Settings</string>
+    <string name="action_solar_system">Solar system</string>
 
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_wiki">Find on Wikipedia</string>
@@ -16,6 +17,4 @@
     <string name="main_fragment_label">Picture of the day</string>
     <string name="settings_fragment_label">Settings</string>
     <string name="theme_options_title">Theme options</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
