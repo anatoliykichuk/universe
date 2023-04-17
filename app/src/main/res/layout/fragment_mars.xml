@@ -9,4 +9,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_mars" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/swipe_indicators_container_margin"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/swipe_indicator_margin"
+            android:layout_marginEnd="@dimen/swipe_indicator_margin"
+            android:src="@drawable/swipe_indicator_passive" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/swipe_indicator_margin"
+            android:layout_marginEnd="@dimen/swipe_indicator_margin"
+            android:src="@drawable/swipe_indicator_active" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/swipe_indicator_margin"
+            android:layout_marginEnd="@dimen/swipe_indicator_margin"
+            android:src="@drawable/swipe_indicator_passive" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </FrameLayout>
