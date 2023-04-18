@@ -11,10 +11,10 @@ class PagerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPagerBinding
 
-    private val tabTitleByPosition = mapOf<Int, String>(
-        0 to getString(R.string.tab_earth_title),
-        1 to getString(R.string.tab_mars_title),
-        2 to getString(R.string.tab_weather_title)
+    private val tabTitleIdByPosition = mapOf<Int, Int>(
+        0 to R.string.tab_earth_title,
+        1 to R.string.tab_mars_title,
+        2 to R.string.tab_weather_title
     )
 
     private val tabIconIdByPosition = mapOf<Int, Int>(
@@ -35,7 +35,7 @@ class PagerActivity : AppCompatActivity() {
 
     private fun setTabs() {
         TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
-            tab.text = tabTitleByPosition[position]!!
+            tab.text = getText(tabTitleIdByPosition[position]!!)
             tab.icon = ContextCompat.getDrawable(
                 this@PagerActivity, tabIconIdByPosition[position]!!
             )
