@@ -20,8 +20,4 @@ class PagerAdapter(fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment {
         return fragmentsByPosition[position]!!
     }
-
-//    override fun getPageTitle(position: Int): CharSequence? {
-//
-//    }
 }

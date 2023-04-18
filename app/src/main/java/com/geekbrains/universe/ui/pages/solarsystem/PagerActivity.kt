@@ -39,6 +39,6 @@ class PagerActivity : AppCompatActivity() {
             tab.icon = ContextCompat.getDrawable(
                 this@PagerActivity, tabIconIdByPosition[position]!!
             )
-        }
+        }.attach()
     }
 }
