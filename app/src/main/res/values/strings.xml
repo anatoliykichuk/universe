@@ -17,4 +17,7 @@
     <string name="main_fragment_label">Picture of the day</string>
     <string name="settings_fragment_label">Settings</string>
     <string name="theme_options_title">Theme options</string>
+    <string name="tab_mars_title">Mars</string>
+    <string name="tab_earth_title">Earth</string>
+    <string name="tab_weather_title">Weather</string>
 </resources>
