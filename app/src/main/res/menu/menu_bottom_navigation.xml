@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_earth"
+        android:icon="@drawable/ic_earth"
+        android:title="@string/action_earth_title" />
+
+    <item
+        android:id="@+id/action_mars"
+        android:icon="@drawable/ic_mars"
+        android:title="@string/action_mars_title" />
+
+    <item
+        android:id="@+id/action_weather"
+        android:icon="@drawable/ic_system"
+        android:title="@string/action_weather_title" />
+
+</menu>
