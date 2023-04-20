@@ -25,7 +25,7 @@ class PictureOfTheDayViewModel(
 
         Thread {
             liveData.postValue(
-                AppState.Success(Repository().getPictureFromNet(date))
+                AppState.Success(Repository().getPictureOfTheDayFromNet(date))
             )
             dataPosted = true
         }.start()

@@ -1,4 +1,4 @@
-package com.geekbrains.universe.data.net
+package com.geekbrains.universe.data.net.pictureoftheday
 
 import com.geekbrains.universe.domain.PictureOfTheDay
 import java.time.LocalDate

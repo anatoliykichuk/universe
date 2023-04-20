@@ -1,6 +1,6 @@
 package com.geekbrains.universe.domain
 
-import com.geekbrains.universe.data.net.MediaType
+import com.geekbrains.universe.data.net.pictureoftheday.MediaType
 import java.time.LocalDate
 
 class PictureOfTheDay(
