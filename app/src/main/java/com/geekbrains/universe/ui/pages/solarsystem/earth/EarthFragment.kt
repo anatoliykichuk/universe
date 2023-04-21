@@ -8,10 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import com.geekbrains.universe.databinding.FragmentEarthBinding
-import com.geekbrains.universe.domain.EarthImagingCamera
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.utils.QueryDay
-import java.time.LocalDate
 
 class EarthFragment : Fragment() {
 
