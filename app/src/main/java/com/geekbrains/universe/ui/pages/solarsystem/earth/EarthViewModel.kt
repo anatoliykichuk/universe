@@ -1,4 +1,4 @@
-package com.geekbrains.universe.ui.main
+package com.geekbrains.universe.ui.pages.solarsystem.earth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.geekbrains.universe.data.net.Repository
 import com.geekbrains.universe.ui.AppState
 
-class PictureOfTheDayViewModel(
+class EarthViewModel(
     private val liveData: MutableLiveData<AppState> = MutableLiveData()
 ) : ViewModel() {
 
@@ -25,7 +25,7 @@ class PictureOfTheDayViewModel(
 
         Thread {
             liveData.postValue(
-                AppState.SuccessPictureOfTheDay(Repository().getPictureOfTheDayFromNet(date))
+                AppState.SuccessEarthImagingCamera(Repository().getEarthImagingCameraFromNet(date))
             )
             dataPosted = true
         }.start()

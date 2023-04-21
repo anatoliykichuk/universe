@@ -1,4 +1,4 @@
-package com.geekbrains.universe.data.net
+package com.geekbrains.universe.data.net.pictureoftheday
 
 
 import com.google.gson.annotations.SerializedName

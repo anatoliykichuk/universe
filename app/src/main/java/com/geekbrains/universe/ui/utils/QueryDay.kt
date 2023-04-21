@@ -2,7 +2,7 @@ package com.geekbrains.universe.ui.utils
 
 import java.time.LocalDate
 
-object PicturesDay {
+object QueryDay {
 
     private var shiftFromCurrentDate: Int = 0
 
@@ -17,6 +17,11 @@ object PicturesDay {
 
     fun dayBeforeYesterday(): String {
         shiftFromCurrentDate = 2
+        return shiftDay()
+    }
+
+    fun aWeekAgo(): String {
+        shiftFromCurrentDate = 7
         return shiftDay()
     }
 

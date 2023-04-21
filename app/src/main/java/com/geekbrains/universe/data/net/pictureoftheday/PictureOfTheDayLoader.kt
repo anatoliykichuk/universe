@@ -1,7 +1,10 @@
-package com.geekbrains.universe.data.net
+package com.geekbrains.universe.data.net.pictureoftheday
 
 import com.geekbrains.universe.BuildConfig
+import com.geekbrains.universe.data.net.RetrofitClient
 import com.geekbrains.universe.domain.PictureOfTheDay
+
+const val BASE_URL = "https://api.nasa.gov"
 
 class PictureOfTheDayLoader {
 
@@ -17,10 +20,9 @@ class PictureOfTheDayLoader {
     private fun loadSafety(date: String): PictureOfTheDay? {
         var pictureOfTheDay: PictureOfTheDay? = null
 
-        RetrofitClient
-            .getClient()
+        RetrofitClient().getClient(BASE_URL)
             .create(PictureOfTheDayApi::class.java)
-            .getPicture(BuildConfig.NASA_API_KEY, date)
+            .getData(BuildConfig.NASA_API_KEY, date)
             .execute().let {
                 if (it.isSuccessful) {
                     val pictureOfTheDayDto = it.body()!!
