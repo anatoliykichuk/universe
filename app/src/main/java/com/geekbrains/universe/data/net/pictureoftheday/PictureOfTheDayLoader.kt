@@ -20,7 +20,7 @@ class PictureOfTheDayLoader {
     private fun loadSafety(date: String): PictureOfTheDay? {
         var pictureOfTheDay: PictureOfTheDay? = null
 
-        RetrofitClient.getClient(BASE_URL)
+        RetrofitClient().getClient(BASE_URL)
             .create(PictureOfTheDayApi::class.java)
             .getData(BuildConfig.NASA_API_KEY, date)
             .execute().let {

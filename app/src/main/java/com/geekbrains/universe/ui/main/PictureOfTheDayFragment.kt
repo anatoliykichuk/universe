@@ -15,7 +15,7 @@ import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
-import com.geekbrains.universe.ui.utils.PicturesDay
+import com.geekbrains.universe.ui.utils.QueryDay
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class PictureOfTheDayFragment : Fragment() {
@@ -45,11 +45,11 @@ class PictureOfTheDayFragment : Fragment() {
         val titleView = view.findViewById<TextView>(R.id.bottom_sheet_description_header)
         val descriptionView = view.findViewById<TextView>(R.id.bottom_sheet_description)
 
-        viewModel.getLiveFata().observe(viewLifecycleOwner) {
+        viewModel.getLiveData().observe(viewLifecycleOwner) {
             renderData(it, titleView, descriptionView)
         }
 
-        viewModel.getPicture(PicturesDay.today())
+        viewModel.getData(QueryDay.today())
 
         binding.searchTextLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -60,15 +60,15 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         binding.today.setOnClickListener {
-            viewModel.getPicture(PicturesDay.today())
+            viewModel.getData(QueryDay.today())
         }
 
         binding.yesterday.setOnClickListener {
-            viewModel.getPicture(PicturesDay.yesterday())
+            viewModel.getData(QueryDay.yesterday())
         }
 
         binding.dayBeforeYesterday.setOnClickListener {
-            viewModel.getPicture(PicturesDay.dayBeforeYesterday())
+            viewModel.getData(QueryDay.dayBeforeYesterday())
         }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -87,7 +87,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun renderData(appState: AppState, titleView: TextView, descriptionView: TextView) {
         when (appState) {
-            is AppState.Success -> {
+            is AppState.SuccessPictureOfTheDay -> {
                 binding.loadingProcess.visibility = View.GONE
 
                 appState.pictureOfTheDay?.let {
@@ -96,6 +96,10 @@ class PictureOfTheDayFragment : Fragment() {
                     titleView.text = it.title
                     descriptionView.text = it.explanation
                 }
+            }
+
+            is AppState.SuccessEarthImagingCamera -> {
+                binding.loadingProcess.visibility = View.VISIBLE
             }
 
             is AppState.Loading -> {

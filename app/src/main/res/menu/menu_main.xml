@@ -4,13 +4,6 @@
     tools:context="com.geekbrains.universe.ui.MainActivity">
 
     <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_favorite"
-        android:orderInCategory="10"
-        android:title="@string/action_favorite"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_solar_system"
         android:icon="@drawable/ic_solar_system"
         android:orderInCategory="20"

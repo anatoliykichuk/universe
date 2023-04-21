@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pages.solarsystem.EarthFragment">
+    tools:context=".ui.pages.solarsystem.earth.EarthFragment">
 
     <ImageView
+        android:id="@+id/earth"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg_earth" />
@@ -39,5 +40,22 @@
             android:src="@drawable/swipe_indicator_passive" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <FrameLayout
+        android:id="@+id/loading_process"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loading_background"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/action_settings" />
+    </FrameLayout>
 
 </FrameLayout>

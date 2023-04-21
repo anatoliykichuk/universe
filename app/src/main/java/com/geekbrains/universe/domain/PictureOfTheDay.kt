@@ -11,7 +11,6 @@ class PictureOfTheDay(
     val url: String,
     val hdurl: String
 ) {
-
     fun getUrlFilled(): String {
         return if (url.isEmpty()) {
             hdurl

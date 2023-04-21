@@ -3,6 +3,7 @@ package com.geekbrains.universe.ui.pages.solarsystem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.geekbrains.universe.ui.pages.solarsystem.earth.EarthFragment
 
 class PagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {

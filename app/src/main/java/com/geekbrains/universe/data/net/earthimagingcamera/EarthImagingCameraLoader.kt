@@ -19,7 +19,7 @@ class EarthImagingCameraLoader {
     private fun loadSafety(date: String): EarthImagingCamera? {
         var earthImagingCamera: EarthImagingCamera? = null
 
-        RetrofitClient.getClient(BASE_URL)
+        RetrofitClient().getClient(BASE_URL)
             .create(EarthImagingCameraApi::class.java)
             .getData(date)
             .execute().let {
