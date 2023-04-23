@@ -24,7 +24,7 @@
             app:endIconDrawable="@drawable/ic_wikipedia"
             app:endIconMode="custom"
             app:helperText="@string/wiki_helper_text"
-            app:layout_constraintBottom_toTopOf="@+id/days_options_gravity"
+            app:layout_constraintBottom_toTopOf="@+id/days_options"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -36,43 +36,32 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/days_options_gravity"
-            android:layout_width="match_parent"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/days_options"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/image_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:singleSelection="true">
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/days_options"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/image_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:singleSelection="true">
+            <com.google.android.material.chip.Chip
+                android:id="@+id/day_before_yesterday"
+                style="@style/chipStyle"
+                android:text="@string/day_before_yesterday" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/day_before_yesterday"
-                    style="@style/chipStyle"
-                    android:text="@string/day_before_yesterday" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/yesterday"
+                style="@style/chipStyle"
+                android:text="@string/yesterday" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/yesterday"
-                    style="@style/chipStyle"
-                    android:text="@string/yesterday" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/today"
+                style="@style/chipStyle"
+                android:text="@string/today" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/today"
-                    style="@style/chipStyle"
-                    android:text="@string/today" />
-
-            </com.google.android.material.chip.ChipGroup>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.chip.ChipGroup>
 
         <com.geekbrains.universe.ui.utils.EquilateralImageView
             android:id="@+id/image_view"
@@ -85,6 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.9"
             app:srcCompat="@drawable/ic_no_photo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
