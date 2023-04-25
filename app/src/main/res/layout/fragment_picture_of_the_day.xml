@@ -77,9 +77,9 @@
             app:layout_constraintWidth_percent="0.9"
             app:srcCompat="@drawable/ic_no_photo" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <include layout="@layout/bottom_sheet" />
 
-    <include layout="@layout/bottom_sheet" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
         android:id="@+id/loading_process"
