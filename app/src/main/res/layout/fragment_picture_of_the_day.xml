@@ -100,6 +100,7 @@
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:contentDescription="@string/action_settings" />
+
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
