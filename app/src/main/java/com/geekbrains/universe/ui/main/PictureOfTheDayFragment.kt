@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import com.geekbrains.universe.R
-import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.databinding.FragmentPictureOfTheDayStartBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
