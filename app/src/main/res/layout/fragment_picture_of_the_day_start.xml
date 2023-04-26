@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/wiki_button_margin_end"
                 android:layout_marginBottom="@dimen/wiki_button_margin_bottom"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/search_text_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/search_text_layout"

@@ -21,4 +21,7 @@
     <dimen name="swipe_indicator_margin">7dp</dimen>
     <dimen name="tab_text_size">20sp</dimen>
     <dimen name="tab_drawable_padding">10dp</dimen>
+    <dimen name="wiki_button_margin_end">8dp</dimen>
+    <dimen name="wiki_button_margin_bottom">12dp</dimen>
+    <dimen name="motion_layout_padding">10dp</dimen>
 </resources>
