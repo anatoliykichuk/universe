@@ -12,6 +12,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.ActivityMainBinding
+import com.geekbrains.universe.ui.pages.animations.AnimationsActivity
 import com.geekbrains.universe.ui.pages.solarsystem.PagerActivity
 
 class MainActivity : AppCompatActivity() {
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity() {
                 goToSettingsPage()
                 true
             }
+            R.id.action_animations -> {
+                goToAnimationsPage()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -66,5 +71,9 @@ class MainActivity : AppCompatActivity() {
     private fun goToSettingsPage() {
         findNavController(R.id.nav_host_fragment_content_main)
             .navigate(R.id.action_MainFragment_to_SettingsFragment)
+    }
+
+    private fun goToAnimationsPage() {
+        startActivity(Intent(this, AnimationsActivity::class.java))
     }
 }
