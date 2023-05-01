@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import com.geekbrains.universe.R
-import com.geekbrains.universe.databinding.FragmentPictureOfTheDayStartBinding
+import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.geekbrains.universe.ui.utils.QueryDay
@@ -29,7 +29,7 @@ class PictureOfTheDayFragment : Fragment() {
         fun newInstance() = PictureOfTheDayFragment()
     }
 
-    private var _binding: FragmentPictureOfTheDayStartBinding? = null
+    private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding
         get() = _binding!!
 
@@ -41,7 +41,7 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPictureOfTheDayStartBinding.inflate(inflater, container, false)
+        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -78,7 +78,7 @@ class PictureOfTheDayFragment : Fragment() {
             viewModel.getData(QueryDay.dayBeforeYesterday())
         }
 
-        binding.imageView.setOnClickListener {
+        binding.picture.setOnClickListener {
             isPictureExpanded != isPictureExpanded
 
             TransitionManager.beginDelayedTransition(
@@ -124,7 +124,7 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.loadingProcess.visibility = View.GONE
 
                 appState.pictureOfTheDay?.let {
-                    binding.imageView.load(it.getUrlFilled())
+                    binding.picture.load(it.getUrlFilled())
 
                     titleView.text = it.title
                     descriptionView.text = it.explanation
