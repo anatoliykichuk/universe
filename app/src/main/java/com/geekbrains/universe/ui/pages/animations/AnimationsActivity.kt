@@ -1,72 +1,49 @@
 package com.geekbrains.universe.ui.pages.animations
 
-import android.graphics.Rect
 import android.os.Bundle
-import android.transition.Explode
-import android.transition.Transition
+import android.transition.ChangeBounds
+import android.transition.ChangeImageTransform
 import android.transition.TransitionManager
-import android.view.LayoutInflater
-import android.view.View
+import android.transition.TransitionSet
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.universe.R
-import com.geekbrains.universe.databinding.ActivityAnimationsExplodeBinding
-
-private const val ITEM_COUNT = 32
+import com.geekbrains.universe.databinding.ActivityAnimationsEnlargeBinding
 
 class AnimationsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAnimationsExplodeBinding
+    private lateinit var binding: ActivityAnimationsEnlargeBinding
+    private var isExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityAnimationsExplodeBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_animations_explode)
+        binding = ActivityAnimationsEnlargeBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_animations_enlarge)
 
-        binding.recyclerView.adapter = Adapter()
-    }
+        binding.imageView.setOnClickListener {
+            isExpanded != isExpanded
 
-    private fun explode(clickedView: View) {
-        val viewRect = Rect()
-        clickedView.getGlobalVisibleRect(viewRect)
-
-        val explode = Explode()
-        explode.epicenterCallback = object : Transition.EpicenterCallback() {
-            override fun onGetEpicenter(transition: Transition?): Rect {
-                return viewRect
-            }
-        }
-
-        explode.duration = 1000
-        TransitionManager.beginDelayedTransition(binding.recyclerView, explode)
-
-        binding.recyclerView.adapter = null
-    }
-
-    private inner class Adapter : RecyclerView.Adapter<ViewHolder>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            return ViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                    R.layout.activity_animations_explode_recycler_view_item,
-                    parent,
-                    false
-                ) as View
+            TransitionManager.beginDelayedTransition(
+                binding.container,
+                TransitionSet().addTransition(ChangeBounds()).addTransition(ChangeImageTransform())
             )
-        }
 
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.itemView.setOnClickListener() {
-                explode(it)
-            }
-        }
+            val params: ViewGroup.LayoutParams = binding.imageView.layoutParams
+            params.height =
+                if (isExpanded)
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                else
+                    ViewGroup.LayoutParams.WRAP_CONTENT
 
-        override fun getItemCount(): Int {
-            return ITEM_COUNT
+            binding.imageView.layoutParams = params
+
+            binding.imageView.scaleType =
+                if (isExpanded)
+                    ImageView.ScaleType.CENTER_CROP
+                else
+                    ImageView.ScaleType.FIT_CENTER
         }
     }
-
-    private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
