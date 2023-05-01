@@ -23,5 +23,7 @@
     <dimen name="tab_drawable_padding">10dp</dimen>
     <dimen name="wiki_button_margin_end">8dp</dimen>
     <dimen name="wiki_button_margin_bottom">12dp</dimen>
-    <dimen name="motion_layout_padding">10dp</dimen>
+    <dimen name="constraint_layout_padding">10dp</dimen>
+    <dimen name="recycler_view_button_height">100dp</dimen>
+    <dimen name="recycler_view_button_margin">5dp</dimen>
 </resources>

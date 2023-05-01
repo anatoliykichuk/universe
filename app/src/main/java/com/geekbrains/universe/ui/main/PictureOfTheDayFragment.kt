@@ -3,16 +3,21 @@ package com.geekbrains.univerce.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.ChangeImageTransform
+import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import com.geekbrains.universe.R
-import com.geekbrains.universe.databinding.FragmentPictureOfTheDayStartBinding
+import com.geekbrains.universe.databinding.FragmentPictureOfTheDayBinding
 import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.geekbrains.universe.ui.utils.QueryDay
@@ -24,17 +29,19 @@ class PictureOfTheDayFragment : Fragment() {
         fun newInstance() = PictureOfTheDayFragment()
     }
 
-    private var _binding: FragmentPictureOfTheDayStartBinding? = null
+    private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding
         get() = _binding!!
 
     private val viewModel: PictureOfTheDayViewModel by viewModels()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
+    private var isPictureExpanded = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPictureOfTheDayStartBinding.inflate(inflater, container, false)
+        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -71,6 +78,17 @@ class PictureOfTheDayFragment : Fragment() {
             viewModel.getData(QueryDay.dayBeforeYesterday())
         }
 
+        binding.picture.setOnClickListener {
+            isPictureExpanded != isPictureExpanded
+
+            TransitionManager.beginDelayedTransition(
+                binding.container,
+                TransitionSet().addTransition(ChangeBounds()).addTransition(ChangeImageTransform())
+            )
+
+            changeImageParams(it as ImageView)
+        }
+
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
 
@@ -78,6 +96,21 @@ class PictureOfTheDayFragment : Fragment() {
         super.onDestroyView()
 
         _binding = null
+    }
+
+    private fun changeImageParams(picture: ImageView) {
+        picture.layoutParams.height =
+            if (isPictureExpanded)
+                ViewGroup.LayoutParams.MATCH_PARENT
+            else
+                ViewGroup.LayoutParams.WRAP_CONTENT
+
+        picture.scaleType =
+            if (isPictureExpanded)
+                ImageView.ScaleType.CENTER_CROP
+            else
+                ImageView.ScaleType.FIT_CENTER
+
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -91,7 +124,7 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.loadingProcess.visibility = View.GONE
 
                 appState.pictureOfTheDay?.let {
-                    binding.imageView.load(it.getUrlFilled())
+                    binding.picture.load(it.getUrlFilled())
 
                     titleView.text = it.title
                     descriptionView.text = it.explanation

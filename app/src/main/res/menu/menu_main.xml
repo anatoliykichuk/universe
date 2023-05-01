@@ -4,6 +4,13 @@
     tools:context="com.geekbrains.universe.ui.MainActivity">
 
     <item
+        android:id="@+id/action_animations"
+        android:icon="@drawable/ic_animations"
+        android:orderInCategory="10"
+        android:title="Animations"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_solar_system"
         android:icon="@drawable/ic_solar_system"
         android:orderInCategory="20"
@@ -16,4 +23,5 @@
         android:orderInCategory="30"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />
+
 </menu>

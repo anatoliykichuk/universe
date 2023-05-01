@@ -25,5 +25,6 @@
     <string name="action_earth_title">Earth</string>
     <string name="action_mars_title">Mars</string>
     <string name="action_weather_title">Weather</string>
+    <string name="recycler_view_button_text">Tap on me</string>
 
 </resources>
