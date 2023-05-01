@@ -30,14 +30,11 @@ class AnimationsActivity : AppCompatActivity() {
                 TransitionSet().addTransition(ChangeBounds()).addTransition(ChangeImageTransform())
             )
 
-            val params: ViewGroup.LayoutParams = binding.imageView.layoutParams
-            params.height =
+            binding.imageView.layoutParams.height =
                 if (isExpanded)
                     ViewGroup.LayoutParams.MATCH_PARENT
                 else
                     ViewGroup.LayoutParams.WRAP_CONTENT
-
-            binding.imageView.layoutParams = params
 
             binding.imageView.scaleType =
                 if (isExpanded)
