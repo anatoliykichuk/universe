@@ -3,9 +3,14 @@ package com.geekbrains.univerce.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.ChangeImageTransform
+import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -30,6 +35,8 @@ class PictureOfTheDayFragment : Fragment() {
 
     private val viewModel: PictureOfTheDayViewModel by viewModels()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
+    private var isPictureExpanded = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -71,6 +78,17 @@ class PictureOfTheDayFragment : Fragment() {
             viewModel.getData(QueryDay.dayBeforeYesterday())
         }
 
+        binding.imageView.setOnClickListener {
+            isPictureExpanded != isPictureExpanded
+
+            TransitionManager.beginDelayedTransition(
+                binding.container,
+                TransitionSet().addTransition(ChangeBounds()).addTransition(ChangeImageTransform())
+            )
+
+            changeImageParams(it as ImageView)
+        }
+
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
 
@@ -78,6 +96,21 @@ class PictureOfTheDayFragment : Fragment() {
         super.onDestroyView()
 
         _binding = null
+    }
+
+    private fun changeImageParams(picture: ImageView) {
+        picture.layoutParams.height =
+            if (isPictureExpanded)
+                ViewGroup.LayoutParams.MATCH_PARENT
+            else
+                ViewGroup.LayoutParams.WRAP_CONTENT
+
+        picture.scaleType =
+            if (isPictureExpanded)
+                ImageView.ScaleType.CENTER_CROP
+            else
+                ImageView.ScaleType.FIT_CENTER
+
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
