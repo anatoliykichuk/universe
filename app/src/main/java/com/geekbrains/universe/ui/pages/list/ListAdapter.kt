@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.geekbrains.universe.R
 import com.geekbrains.universe.domain.ItemData
 
-class ListActivityAdapter(
+class ListAdapter(
     private val onListItemClickListener: OnListItemClickListener,
     private val data: List<ItemData>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
