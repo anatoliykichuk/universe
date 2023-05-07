@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_list -> {
+                goToListPage()
+                true
+            }
+            R.id.action_animations -> {
                 goToAnimationsPage()
                 true
             }
@@ -53,10 +57,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_settings -> {
                 goToSettingsPage()
-                true
-            }
-            R.id.action_animations -> {
-                goToAnimationsPage()
                 true
             }
             else -> super.onOptionsItemSelected(item)
