@@ -45,4 +45,32 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="recyclerItemEarthTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">35sp</item>
+        <item name="textInputStyle">bold</item>
+    </style>
+
+    <style name="recyclerItemWikiStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="recyclerItemDescriptionStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="recyclerItemMarsTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">35sp</item>
+        <item name="textInputStyle">bold</item>
+    </style>
+
 </resources>

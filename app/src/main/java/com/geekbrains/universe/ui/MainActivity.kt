@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.ActivityMainBinding
 import com.geekbrains.universe.ui.pages.animations.AnimationsActivity
+import com.geekbrains.universe.ui.pages.list.ListActivity
 import com.geekbrains.universe.ui.pages.solarsystem.PagerActivity
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_list -> {
+                goToAnimationsPage()
+                true
+            }
             R.id.action_solar_system -> {
                 goToSolarSystemPages()
                 true
@@ -62,6 +67,10 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    private fun goToListPage() {
+        startActivity(Intent(this, ListActivity::class.java))
     }
 
     private fun goToSolarSystemPages() {
