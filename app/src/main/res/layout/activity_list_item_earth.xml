@@ -15,7 +15,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/earth_title"
-        style="@style/recyclerItemEarthTitleStyle"
+        style="@style/listItemEarthTitleStyle"
         android:text="@string/recycler_item_earth_image_title"
         app:layout_constraintBottom_toBottomOf="@+id/earth_image"
         app:layout_constraintEnd_toStartOf="@+id/earth_image"
@@ -23,14 +23,14 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/wiki_image"
-        style="@style/recyclerItemWikiStyle"
+        style="@style/listItemWikiStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_wikipedia" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
-        style="@style/recyclerItemDescriptionStyle"
+        style="@style/listItemDescriptionStyle"
         android:text="@string/recycler_item_earth_additional_description_title"
         app:layout_constraintBottom_toBottomOf="@id/earth_image"
         app:layout_constraintEnd_toStartOf="@+id/barrier"

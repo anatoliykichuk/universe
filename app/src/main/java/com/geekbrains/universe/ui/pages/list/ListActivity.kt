@@ -31,6 +31,7 @@ class ListActivity : AppCompatActivity() {
 
     private fun getSampleData(): List<ItemData> {
         return arrayListOf(
+            ItemData(ItemData.TYPE_EARTH, "Header"),
             ItemData(ItemData.TYPE_EARTH, "Earth"),
             ItemData(ItemData.TYPE_EARTH, "Earth"),
             ItemData(ItemData.TYPE_EARTH, "Earth"),

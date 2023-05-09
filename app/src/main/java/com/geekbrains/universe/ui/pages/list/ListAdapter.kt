@@ -18,22 +18,30 @@ class ListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        return if (viewType == ItemData.TYPE_EARTH) {
-            EarthViewHolder(
+        return when (viewType) {
+            ItemData.TYPE_EARTH -> EarthViewHolder(
                 inflater.inflate(R.layout.activity_list_item_earth, parent, false)
             ) as ViewHolder
-        } else {
-            MarsViewHolder(
+            ItemData.TYPE_MARS -> MarsViewHolder(
                 inflater.inflate(R.layout.activity_list_item_mars, parent, false)
             ) as ViewHolder
+            else -> HeaderViewHolder(
+                inflater.inflate(R.layout.activity_list_item_header, parent, false)
+            )
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == ItemData.TYPE_EARTH) {
-            (holder as EarthViewHolder).bind(data[position])
-        } else {
-            (holder as MarsViewHolder).bind(data[position])
+        when (getItemViewType(position)) {
+            ItemData.TYPE_EARTH -> {
+                (holder as EarthViewHolder).bind(data[position])
+            }
+            ItemData.TYPE_MARS -> {
+                (holder as MarsViewHolder).bind(data[position])
+            }
+            else -> {
+                (holder as HeaderViewHolder).bind(data[position])
+            }
         }
     }
 
@@ -59,6 +67,14 @@ class ListAdapter(
     inner class MarsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(itemData: ItemData) {
             itemView.findViewById<ImageView>(R.id.mars_image).setOnClickListener {
+                onListItemClickListener.onItemClick(itemData)
+            }
+        }
+    }
+
+    inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(itemData: ItemData) {
+            itemView.setOnClickListener {
                 onListItemClickListener.onItemClick(itemData)
             }
         }

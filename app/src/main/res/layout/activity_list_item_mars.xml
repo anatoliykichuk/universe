@@ -14,7 +14,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mars_title"
-        style="@style/recyclerItemMarsTitleStyle"
+        style="@style/listItemMarsTitleStyle"
         android:text="@string/recycler_item_mars_image_title"
         app:layout_constraintBottom_toBottomOf="@id/mars_image"
         app:layout_constraintStart_toEndOf="@id/mars_image"

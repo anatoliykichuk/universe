@@ -31,5 +31,6 @@
     <string name="recycler_item_earth_image_title">Earth</string>
     <string name="recycler_item_earth_additional_description_title">Additional description</string>
     <string name="recycler_item_mars_image_title">Mars</string>
+    <string name="recycler_item_header_image_title">Header</string>
 
 </resources>
