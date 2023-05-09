@@ -6,43 +6,32 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.geekbrains.universe.R
 import com.geekbrains.universe.domain.ItemData
 
 class ListAdapter(
     private val onListItemClickListener: OnListItemClickListener,
     private val data: List<ItemData>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<BaseViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
             ItemData.TYPE_EARTH -> EarthViewHolder(
                 inflater.inflate(R.layout.activity_list_item_earth, parent, false)
-            ) as ViewHolder
+            ) as BaseViewHolder
             ItemData.TYPE_MARS -> MarsViewHolder(
                 inflater.inflate(R.layout.activity_list_item_mars, parent, false)
-            ) as ViewHolder
+            ) as BaseViewHolder
             else -> HeaderViewHolder(
                 inflater.inflate(R.layout.activity_list_item_header, parent, false)
-            )
+            ) as BaseViewHolder
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (getItemViewType(position)) {
-            ItemData.TYPE_EARTH -> {
-                (holder as EarthViewHolder).bind(data[position])
-            }
-            ItemData.TYPE_MARS -> {
-                (holder as MarsViewHolder).bind(data[position])
-            }
-            else -> {
-                (holder as HeaderViewHolder).bind(data[position])
-            }
-        }
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {
@@ -53,8 +42,8 @@ class ListAdapter(
         return data[position].type
     }
 
-    inner class EarthViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(itemData: ItemData) {
+    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(itemData: ItemData) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 itemView.findViewById<TextView>(R.id.description).text = itemData.description
                 itemView.findViewById<ImageView>(R.id.wiki_image).setOnClickListener {
@@ -64,16 +53,16 @@ class ListAdapter(
         }
     }
 
-    inner class MarsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(itemData: ItemData) {
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(itemData: ItemData) {
             itemView.findViewById<ImageView>(R.id.mars_image).setOnClickListener {
                 onListItemClickListener.onItemClick(itemData)
             }
         }
     }
 
-    inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(itemData: ItemData) {
+    inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(itemData: ItemData) {
             itemView.setOnClickListener {
                 onListItemClickListener.onItemClick(itemData)
             }
