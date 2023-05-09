@@ -70,19 +70,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToListPage() {
-        startActivity(Intent(this, ListActivity::class.java))
+        startActivity(Intent(this@MainActivity, ListActivity::class.java))
+    }
+
+    private fun goToAnimationsPage() {
+        startActivity(Intent(this@MainActivity, AnimationsActivity::class.java))
     }
 
     private fun goToSolarSystemPages() {
-        startActivity(Intent(this, PagerActivity::class.java))
+        startActivity(Intent(this@MainActivity, PagerActivity::class.java))
     }
 
     private fun goToSettingsPage() {
         findNavController(R.id.nav_host_fragment_content_main)
             .navigate(R.id.action_MainFragment_to_SettingsFragment)
-    }
-
-    private fun goToAnimationsPage() {
-        startActivity(Intent(this, AnimationsActivity::class.java))
     }
 }

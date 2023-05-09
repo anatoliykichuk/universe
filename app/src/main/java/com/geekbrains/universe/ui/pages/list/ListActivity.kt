@@ -25,11 +25,11 @@ class ListActivity : AppCompatActivity() {
                         .show()
                 }
             },
-            getSamplData()
+            getSampleData()
         )
     }
 
-    private fun getSamplData(): List<ItemData> {
+    private fun getSampleData(): List<ItemData> {
         return arrayListOf(
             ItemData(ItemData.TYPE_EARTH, "Earth"),
             ItemData(ItemData.TYPE_EARTH, "Earth"),
