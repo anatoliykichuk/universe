@@ -66,6 +66,10 @@ class ListAdapter(
             itemView.findViewById<ImageView>(R.id.remove_item).setOnClickListener {
                 removeItem(layoutPosition)
             }
+
+            itemView.findViewById<ImageView>(R.id.move_up_item).setOnClickListener {
+                removeItem(layoutPosition)
+            }
         }
     }
 
@@ -90,6 +94,24 @@ class ListAdapter(
     private fun removeItem(layoutPosition: Int) {
         data.removeAt(layoutPosition)
         notifyItemRemoved(layoutPosition)
+    }
+
+    private fun moveUpItem(layoutPosition: Int) {
+        layoutPosition.takeIf { it > 1 }?.also { currentPosition ->
+            data.removeAt(currentPosition).apply {
+                data.add(currentPosition - 1, this)
+            }
+            notifyItemMoved(currentPosition, currentPosition - 1)
+        }
+    }
+
+    private fun moveDownItem(layoutPosition: Int) {
+        layoutPosition.takeIf { it < data.size - 1 }?.also { currentPosition ->
+            data.removeAt(currentPosition).apply {
+                data.add(currentPosition + 1, this)
+            }
+            notifyItemMoved(currentPosition, currentPosition + 1)
+        }
     }
 
     private fun getItem() = ItemData(ItemData.TYPE_MARS, "Mars", "")

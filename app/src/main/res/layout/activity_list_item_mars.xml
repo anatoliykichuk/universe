@@ -34,11 +34,26 @@
         app:layout_constraintTop_toBottomOf="@+id/add_item"
         app:srcCompat="@drawable/ic_remove_item" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/move_up_item"
+        style="@style/listChangeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_item"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_move_up_item" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/move_down_item"
+        style="@style/listChangeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/remove_item"
+        app:layout_constraintTop_toBottomOf="@id/move_up_item"
+        app:srcCompat="@drawable/ic_move_down_item" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/recycler_item_mars_view_height"
         android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/mars_image"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/mars_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
