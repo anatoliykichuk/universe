@@ -79,17 +79,17 @@ class ListAdapter(
 
     fun appendItem() {
         data.add(getItem())
-        notifyDataSetChanged()
+        notifyItemInserted(itemCount - 1)
     }
 
     private fun addItem(layoutPosition: Int) {
         data.add(layoutPosition, getItem())
-        notifyDataSetChanged()
+        notifyItemInserted(layoutPosition)
     }
 
     private fun removeItem(layoutPosition: Int) {
         data.removeAt(layoutPosition)
-        notifyDataSetChanged()
+        notifyItemRemoved(layoutPosition)
     }
 
     private fun getItem() = ItemData(ItemData.TYPE_MARS, "Mars", "")
