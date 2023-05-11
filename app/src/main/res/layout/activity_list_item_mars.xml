@@ -20,6 +20,20 @@
         app:layout_constraintStart_toEndOf="@id/mars_image"
         app:layout_constraintTop_toTopOf="@id/mars_image" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/add_item"
+        style="@style/listChangeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_item" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/remove_item"
+        style="@style/listChangeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_item"
+        app:srcCompat="@drawable/ic_remove_item" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/recycler_item_mars_view_height"
