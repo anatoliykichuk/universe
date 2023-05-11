@@ -11,7 +11,7 @@ import com.geekbrains.universe.domain.ItemData
 
 class ListAdapter(
     private val onListItemClickListener: OnListItemClickListener,
-    private val data: List<ItemData>
+    private val data: MutableList<ItemData>
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -58,6 +58,14 @@ class ListAdapter(
             itemView.findViewById<ImageView>(R.id.mars_image).setOnClickListener {
                 onListItemClickListener.onItemClick(itemData)
             }
+
+            itemView.findViewById<ImageView>(R.id.add_item).setOnClickListener {
+                addItem(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.remove_item).setOnClickListener {
+                removeItem(layoutPosition)
+            }
         }
     }
 
@@ -68,4 +76,21 @@ class ListAdapter(
             }
         }
     }
+
+    fun appendItem() {
+        data.add(getItem())
+        notifyDataSetChanged()
+    }
+
+    private fun addItem(layoutPosition: Int) {
+        data.add(layoutPosition, getItem())
+        notifyDataSetChanged()
+    }
+
+    private fun removeItem(layoutPosition: Int) {
+        data.removeAt(layoutPosition)
+        notifyDataSetChanged()
+    }
+
+    private fun getItem() = ItemData(ItemData.TYPE_MARS, "Mars", "")
 }

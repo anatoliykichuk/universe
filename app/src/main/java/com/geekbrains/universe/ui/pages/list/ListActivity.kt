@@ -17,7 +17,7 @@ class ListActivity : AppCompatActivity() {
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.list.adapter = ListAdapter(
+        val adapter = ListAdapter(
             object : OnListItemClickListener {
                 override fun onItemClick(itemData: ItemData) {
                     Toast
@@ -27,22 +27,31 @@ class ListActivity : AppCompatActivity() {
             },
             getSampleData()
         )
+
+        binding.list.adapter = adapter
+        binding.listActionButton.setOnClickListener { adapter.appendItem() }
     }
 
-    private fun getSampleData(): List<ItemData> {
-        return arrayListOf(
-            ItemData(ItemData.TYPE_EARTH, "Header"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_MARS, "Mars", ""),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_EARTH, "Earth"),
-            ItemData(ItemData.TYPE_MARS, "Mars", "")
-        )
+    private fun getSampleData(simple: Boolean = true): MutableList<ItemData> {
+        return if (simple) {
+            arrayListOf(
+                ItemData(ItemData.TYPE_MARS, "Mars", "")
+            )
+        } else {
+            arrayListOf(
+                ItemData(ItemData.TYPE_EARTH, "Header"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_MARS, "Mars", ""),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_EARTH, "Earth"),
+                ItemData(ItemData.TYPE_MARS, "Mars", "")
+            )
+        }
     }
 }

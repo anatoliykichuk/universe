@@ -32,4 +32,5 @@
     <dimen name="recycler_item_mars_image_height">120dp</dimen>
     <dimen name="recycler_item_mars_view_height">1px</dimen>
     <dimen name="recycler_item_earth_view_height">1px</dimen>
+    <dimen name="list_action_button_margin">15dp</dimen>
 </resources>
