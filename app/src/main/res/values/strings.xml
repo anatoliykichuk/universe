@@ -32,5 +32,6 @@
     <string name="recycler_item_earth_additional_description_title">Additional description</string>
     <string name="recycler_item_mars_image_title">Mars</string>
     <string name="recycler_item_header_image_title">Header</string>
+    <string name="mars_description_text">Марс -- четвёртая по удалённости от Солнца и седьмая по размерам планета Солнечной системы. Названа в честь Марса -- древнеримского бога войны, соответствующего древнегреческому Аресу. Иногда Марс называют «красной планетой» из-за красноватого оттенка поверхности, придаваемого ей минералом маггемитом (оксидом железа).</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.geekbrains.universe.ui.pages.list
 
+import android.text.BoringLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import com.geekbrains.universe.domain.ItemData
 
 class ListAdapter(
     private val onListItemClickListener: OnListItemClickListener,
-    private val data: MutableList<ItemData>
+    private val data: MutableList<Pair<ItemData, Boolean>>
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -39,24 +40,31 @@ class ListAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return data[position].type
+        return data[position].first.type
     }
 
     inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(itemData: ItemData) {
+        override fun bind(itemData: Pair<ItemData, Boolean>) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
-                itemView.findViewById<TextView>(R.id.description).text = itemData.description
+                itemView.findViewById<TextView>(R.id.description).text = itemData.first.description
                 itemView.findViewById<ImageView>(R.id.wiki_image).setOnClickListener {
-                    onListItemClickListener.onItemClick(itemData)
+                    onListItemClickListener.onItemClick(itemData.first)
                 }
             }
         }
     }
 
     inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(itemData: ItemData) {
+        override fun bind(itemData: Pair<ItemData, Boolean>) {
             itemView.findViewById<ImageView>(R.id.mars_image).setOnClickListener {
-                onListItemClickListener.onItemClick(itemData)
+                onListItemClickListener.onItemClick(itemData.first)
+            }
+
+            itemView.findViewById<TextView>(R.id.mars_description).visibility =
+                if (itemData.second) View.VISIBLE else View.GONE
+
+            itemView.findViewById<TextView>(R.id.mars_title).setOnClickListener {
+                toggleText(layoutPosition)
             }
 
             itemView.findViewById<ImageView>(R.id.add_item).setOnClickListener {
@@ -68,15 +76,19 @@ class ListAdapter(
             }
 
             itemView.findViewById<ImageView>(R.id.move_up_item).setOnClickListener {
-                removeItem(layoutPosition)
+                moveUpItem(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.move_down_item).setOnClickListener {
+                moveDownItem(layoutPosition)
             }
         }
     }
 
     inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(itemData: ItemData) {
+        override fun bind(itemData: Pair<ItemData, Boolean>) {
             itemView.setOnClickListener {
-                onListItemClickListener.onItemClick(itemData)
+                onListItemClickListener.onItemClick(itemData.first)
             }
         }
     }
@@ -114,5 +126,12 @@ class ListAdapter(
         }
     }
 
-    private fun getItem() = ItemData(ItemData.TYPE_MARS, "Mars", "")
+    private fun getItem() = Pair(ItemData(ItemData.TYPE_MARS, "Mars", ""), false)
+
+    private fun toggleText(layoutPosition: Int) {
+        data[layoutPosition] = data[layoutPosition].let {
+            it.first to !it.second
+        }
+        notifyItemChanged(layoutPosition)
+    }
 }

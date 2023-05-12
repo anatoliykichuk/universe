@@ -32,25 +32,25 @@ class ListActivity : AppCompatActivity() {
         binding.listActionButton.setOnClickListener { adapter.appendItem() }
     }
 
-    private fun getSampleData(simple: Boolean = true): MutableList<ItemData> {
+    private fun getSampleData(simple: Boolean = true): MutableList<Pair<ItemData, Boolean>> {
         return if (simple) {
             arrayListOf(
-                ItemData(ItemData.TYPE_MARS, "Mars", "")
+                Pair(ItemData(ItemData.TYPE_MARS, "Mars", ""), false)
             )
         } else {
             arrayListOf(
-                ItemData(ItemData.TYPE_EARTH, "Header"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_MARS, "Mars", ""),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_EARTH, "Earth"),
-                ItemData(ItemData.TYPE_MARS, "Mars", "")
+                Pair(ItemData(ItemData.TYPE_EARTH, "Header"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_MARS, "Mars", ""), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_EARTH, "Earth"), false),
+                Pair(ItemData(ItemData.TYPE_MARS, "Mars", ""), false)
             )
         }
     }
