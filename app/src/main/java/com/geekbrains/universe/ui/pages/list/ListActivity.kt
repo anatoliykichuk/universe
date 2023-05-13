@@ -1,7 +1,6 @@
 package com.geekbrains.universe.ui.pages.list
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.universe.databinding.ActivityListBinding
@@ -11,8 +10,8 @@ class ListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListBinding
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)

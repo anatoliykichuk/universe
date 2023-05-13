@@ -1,6 +1,6 @@
 package com.geekbrains.universe.ui.pages.list
 
-import android.text.BoringLayout
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,65 @@ import com.geekbrains.universe.domain.ItemData
 class ListAdapter(
     private val onListItemClickListener: OnListItemClickListener,
     private val data: MutableList<Pair<ItemData, Boolean>>
-) : RecyclerView.Adapter<BaseViewHolder>() {
+) : RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
+
+    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(itemData: Pair<ItemData, Boolean>) {
+            if (layoutPosition != RecyclerView.NO_POSITION) {
+                itemView.findViewById<TextView>(R.id.description).text = itemData.first.description
+                itemView.findViewById<ImageView>(R.id.wiki_image).setOnClickListener {
+                    onListItemClickListener.onItemClick(itemData.first)
+                }
+            }
+        }
+    }
+
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view), ItemTouchViewHolder {
+        override fun bind(itemData: Pair<ItemData, Boolean>) {
+            itemView.findViewById<ImageView>(R.id.mars_image).setOnClickListener {
+                onListItemClickListener.onItemClick(itemData.first)
+            }
+
+            itemView.findViewById<TextView>(R.id.mars_description).visibility =
+                if (itemData.second) View.VISIBLE else View.GONE
+
+            itemView.findViewById<TextView>(R.id.mars_title).setOnClickListener {
+                toggleText(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.add_item).setOnClickListener {
+                addItem(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.remove_item).setOnClickListener {
+                removeItem(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.move_up_item).setOnClickListener {
+                moveUpItem(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.move_down_item).setOnClickListener {
+                moveDownItem(layoutPosition)
+            }
+        }
+
+        override fun onItemSelected() {
+            itemView.setBackgroundColor(Color.LTGRAY)
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(0)
+        }
+    }
+
+    inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
+        override fun bind(itemData: Pair<ItemData, Boolean>) {
+            itemView.setOnClickListener {
+                onListItemClickListener.onItemClick(itemData.first)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -43,55 +101,21 @@ class ListAdapter(
         return data[position].first.type
     }
 
-    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(itemData: Pair<ItemData, Boolean>) {
-            if (layoutPosition != RecyclerView.NO_POSITION) {
-                itemView.findViewById<TextView>(R.id.description).text = itemData.first.description
-                itemView.findViewById<ImageView>(R.id.wiki_image).setOnClickListener {
-                    onListItemClickListener.onItemClick(itemData.first)
-                }
-            }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        data.removeAt(fromPosition).apply {
+            data.add(
+                if (toPosition > fromPosition) toPosition - 1 else toPosition, this
+            )
         }
+        notifyItemMoved(fromPosition, toPosition)
     }
 
-    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(itemData: Pair<ItemData, Boolean>) {
-            itemView.findViewById<ImageView>(R.id.mars_image).setOnClickListener {
-                onListItemClickListener.onItemClick(itemData.first)
-            }
-
-            itemView.findViewById<TextView>(R.id.mars_description).visibility =
-                if (itemData.second) View.VISIBLE else View.GONE
-
-            itemView.findViewById<TextView>(R.id.mars_title).setOnClickListener {
-                toggleText(layoutPosition)
-            }
-
-            itemView.findViewById<ImageView>(R.id.add_item).setOnClickListener {
-                addItem(layoutPosition)
-            }
-
-            itemView.findViewById<ImageView>(R.id.remove_item).setOnClickListener {
-                removeItem(layoutPosition)
-            }
-
-            itemView.findViewById<ImageView>(R.id.move_up_item).setOnClickListener {
-                moveUpItem(layoutPosition)
-            }
-
-            itemView.findViewById<ImageView>(R.id.move_down_item).setOnClickListener {
-                moveDownItem(layoutPosition)
-            }
-        }
+    override fun onItemDismiss(position: Int) {
+        data.removeAt(position)
+        notifyItemRemoved(position)
     }
 
-    inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(itemData: Pair<ItemData, Boolean>) {
-            itemView.setOnClickListener {
-                onListItemClickListener.onItemClick(itemData.first)
-            }
-        }
-    }
 
     fun appendItem() {
         data.add(getItem())
