@@ -3,6 +3,7 @@ package com.geekbrains.universe.ui.pages.list
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.geekbrains.universe.databinding.ActivityListBinding
 import com.geekbrains.universe.domain.ItemData
 
@@ -29,6 +30,8 @@ class ListActivity : AppCompatActivity() {
 
         binding.list.adapter = adapter
         binding.listActionButton.setOnClickListener { adapter.appendItem() }
+
+        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.list)
     }
 
     private fun getSampleData(simple: Boolean = true): MutableList<Pair<ItemData, Boolean>> {
