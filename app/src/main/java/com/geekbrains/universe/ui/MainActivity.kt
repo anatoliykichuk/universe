@@ -13,8 +13,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.geekbrains.universe.R
 import com.geekbrains.universe.databinding.ActivityMainBinding
 import com.geekbrains.universe.ui.pages.animations.AnimationsActivity
-import com.geekbrains.universe.ui.pages.list.ListActivity
 import com.geekbrains.universe.ui.pages.solarsystem.PagerActivity
+import com.geekbrains.universe.ui.pages.todolist.ToDoListActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToListPage() {
-        startActivity(Intent(this@MainActivity, ListActivity::class.java))
+        startActivity(Intent(this@MainActivity, ToDoListActivity::class.java))
     }
 
     private fun goToAnimationsPage() {

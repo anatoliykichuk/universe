@@ -1,9 +1,9 @@
-package com.geekbrains.universe.ui.pages.list
+package com.geekbrains.universe.ui.pages.todolist
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemTouchHelperCallback(private val adapter: ListAdapter) : ItemTouchHelper.Callback() {
+class ItemTouchHelperCallback(private val adapter: ToDoListAdapter) : ItemTouchHelper.Callback() {
 
     override fun isLongPressDragEnabled(): Boolean {
         return true

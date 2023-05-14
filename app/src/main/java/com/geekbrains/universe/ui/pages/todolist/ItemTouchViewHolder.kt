@@ -1,4 +1,4 @@
-package com.geekbrains.universe.ui.pages.list
+package com.geekbrains.universe.ui.pages.todolist
 
 interface ItemTouchViewHolder {
     fun onItemSelected()
