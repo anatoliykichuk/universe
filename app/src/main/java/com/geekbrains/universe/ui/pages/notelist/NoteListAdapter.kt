@@ -1,4 +1,4 @@
-package com.geekbrains.universe.ui.pages.todolist
+package com.geekbrains.universe.ui.pages.notelist
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.universe.R
 import com.geekbrains.universe.domain.ItemData
 
-class ToDoListAdapter(
+class NoteListAdapter(
     private var data: MutableList<ItemData>,
     private val dragListener: OnStartDragListener
-) : RecyclerView.Adapter<ToDoListAdapter.ToDoListViewHolder>(), ItemTouchHelperAdapter {
+) : RecyclerView.Adapter<NoteListAdapter.NoteListViewHolder>(), ItemTouchHelperAdapter {
 
-    inner class ToDoListViewHolder(
+    inner class NoteListViewHolder(
         view: View
     ) : RecyclerView.ViewHolder(view), ItemTouchViewHolder {
 
@@ -40,16 +40,16 @@ class ToDoListAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ToDoListAdapter.ToDoListViewHolder {
+    ): NoteListAdapter.NoteListViewHolder {
 
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.activity_to_do_list_item, parent, false)
+            .inflate(R.layout.activity_note_list_item, parent, false)
 
-        return ToDoListViewHolder(view)
+        return NoteListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ToDoListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NoteListViewHolder, position: Int) {
         holder.bind(data[position])
     }
 

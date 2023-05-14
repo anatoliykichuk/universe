@@ -1,26 +1,26 @@
-package com.geekbrains.universe.ui.pages.todolist
+package com.geekbrains.universe.ui.pages.notelist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.geekbrains.universe.databinding.ActivityToDoListBinding
+import com.geekbrains.universe.databinding.ActivityNoteListBinding
 import com.geekbrains.universe.domain.ItemData
 
-class ToDoListActivity : AppCompatActivity() {
+class NoteListActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityToDoListBinding
+    private lateinit var binding: ActivityNoteListBinding
     private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityToDoListBinding.inflate(layoutInflater)
+        binding = ActivityNoteListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val startData = arrayListOf(ItemData())
 
-        val adapter = ToDoListAdapter(
+        val adapter = NoteListAdapter(
             startData,
             object : OnStartDragListener {
                 override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {

@@ -34,7 +34,7 @@
             android:name=".ui.pages.animations.AnimationsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.pages.todolist.ToDoListActivity"
+            android:name=".ui.pages.notelist.NoteListActivity"
             android:exported="false" />
     </application>
 

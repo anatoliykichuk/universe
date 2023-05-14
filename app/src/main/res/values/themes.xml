@@ -59,21 +59,21 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <style name="toDoListItemTitleStyle">
+    <style name="noteListItemTitleStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">35sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="toDoListItemContentStyle">
+    <style name="noteListItemContentStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">25sp</item>
         <item name="android:padding">15dp</item>
     </style>
 
-    <style name="toDoListItemMoveStyle">
+    <style name="noteListItemMoveStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">15dp</item>

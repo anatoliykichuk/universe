@@ -1,4 +1,4 @@
-package com.geekbrains.universe.ui.pages.todolist
+package com.geekbrains.universe.ui.pages.notelist
 
 import androidx.recyclerview.widget.RecyclerView
 
