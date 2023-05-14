@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.universe.databinding.ActivityListBinding
 import com.geekbrains.universe.domain.ItemData
 
 class ListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListBinding
+    private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +27,19 @@ class ListActivity : AppCompatActivity() {
                         .show()
                 }
             },
-            getSampleData()
+            getSampleData(),
+            object : OnStartDragListener {
+                override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+                    itemTouchHelper.startDrag(viewHolder)
+                }
+            }
         )
 
         binding.list.adapter = adapter
         binding.listActionButton.setOnClickListener { adapter.appendItem() }
 
-        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.list)
+        itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
+        itemTouchHelper.attachToRecyclerView(binding.list)
     }
 
     private fun getSampleData(simple: Boolean = true): MutableList<Pair<ItemData, Boolean>> {

@@ -2,6 +2,7 @@ package com.geekbrains.universe.ui.pages.list
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,10 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.universe.R
 import com.geekbrains.universe.domain.ItemData
+import java.security.PrivateKey
 
 class ListAdapter(
     private val onListItemClickListener: OnListItemClickListener,
-    private val data: MutableList<Pair<ItemData, Boolean>>
+    private var data: MutableList<Pair<ItemData, Boolean>>,
+    private val dragListener: OnStartDragListener
 ) : RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
 
     inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
@@ -53,6 +56,13 @@ class ListAdapter(
 
             itemView.findViewById<ImageView>(R.id.move_down_item).setOnClickListener {
                 moveDownItem(layoutPosition)
+            }
+
+            itemView.findViewById<ImageView>(R.id.move_item).setOnTouchListener { _, event ->
+                if (event.actionMasked == MotionEvent.ACTION_DOWN) {
+                    dragListener.onStartDrag(this)
+                }
+                false
             }
         }
 
