@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/mars_image"
@@ -35,9 +36,9 @@
         android:id="@+id/add_item"
         style="@style/listChangeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
         app:layout_constraintEnd_toStartOf="@+id/move_item"
+
+        app:layout_constraintTop_toTopOf="parent"
 
         app:srcCompat="@drawable/ic_add_item" />
 
@@ -45,8 +46,8 @@
         android:id="@+id/remove_item"
         style="@style/listChangeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_item"
         app:layout_constraintEnd_toStartOf="@+id/move_item"
+        app:layout_constraintTop_toBottomOf="@+id/add_item"
         app:srcCompat="@drawable/ic_remove_item" />
 
     <androidx.appcompat.widget.AppCompatImageView
