@@ -1,5 +1,6 @@
 package com.geekbrains.universe.ui.pages.notelist
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -19,7 +20,8 @@ class NoteListAdapter(
         view: View
     ) : RecyclerView.ViewHolder(view), ItemTouchViewHolder {
 
-        fun bind(itemData: ItemData) {
+         @SuppressLint("ClickableViewAccessibility")
+         fun bind(itemData: ItemData) {
             itemView.findViewById<ImageView>(R.id.item_move).setOnTouchListener { _, event ->
                 if (event.actionMasked == MotionEvent.ACTION_DOWN) {
                     dragListener.onStartDrag(this)
@@ -74,34 +76,6 @@ class NoteListAdapter(
     fun appendItem() {
         data.add(getItem())
         notifyItemInserted(itemCount - 1)
-    }
-
-    private fun addItem(layoutPosition: Int) {
-        data.add(layoutPosition, getItem())
-        notifyItemInserted(layoutPosition)
-    }
-
-    private fun removeItem(layoutPosition: Int) {
-        data.removeAt(layoutPosition)
-        notifyItemRemoved(layoutPosition)
-    }
-
-    private fun moveUpItem(layoutPosition: Int) {
-        layoutPosition.takeIf { it > 1 }?.also { currentPosition ->
-            data.removeAt(currentPosition).apply {
-                data.add(currentPosition - 1, this)
-            }
-            notifyItemMoved(currentPosition, currentPosition - 1)
-        }
-    }
-
-    private fun moveDownItem(layoutPosition: Int) {
-        layoutPosition.takeIf { it < data.size - 1 }?.also { currentPosition ->
-            data.removeAt(currentPosition).apply {
-                data.add(currentPosition + 1, this)
-            }
-            notifyItemMoved(currentPosition, currentPosition + 1)
-        }
     }
 
     private fun getItem() = ItemData()
