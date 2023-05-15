@@ -26,5 +26,7 @@
     <string name="action_mars_title">Mars</string>
     <string name="action_weather_title">Weather</string>
     <string name="recycler_view_button_text">Tap on me</string>
+    <string name="main_menu_action_list_title">List</string>
+    <string name="main_menu_action_animations_title">Animations</string>
 
 </resources>
