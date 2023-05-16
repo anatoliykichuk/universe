@@ -1,6 +1,7 @@
 package com.geekbrains.univerce.ui.main
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.transition.ChangeBounds
@@ -127,7 +128,14 @@ class PictureOfTheDayFragment : Fragment() {
                     binding.picture.load(it.getUrlFilled())
 
                     titleView.text = it.title
+                    titleView.typeface = Typeface.createFromAsset(
+                        requireContext().assets, "font/stacker/Stacker-jE03l.ttf"
+                    )
+
                     descriptionView.text = it.explanation
+                    descriptionView.typeface = Typeface.createFromAsset(
+                        requireContext().assets, "font/gepeste/Gepestev-nRJgO.ttf"
+                    )
                 }
             }
 
