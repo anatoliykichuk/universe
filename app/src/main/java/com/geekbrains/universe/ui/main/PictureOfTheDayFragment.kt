@@ -1,9 +1,13 @@
 package com.geekbrains.univerce.ui.main
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.transition.ChangeBounds
 import android.transition.ChangeImageTransform
 import android.transition.TransitionManager
@@ -127,10 +131,7 @@ class PictureOfTheDayFragment : Fragment() {
                 appState.pictureOfTheDay?.let {
                     binding.picture.load(it.getUrlFilled())
 
-                    titleView.text = it.title
-                    titleView.typeface = Typeface.createFromAsset(
-                        requireContext().assets, "font/stacker/Stacker-jE03l.ttf"
-                    )
+                    setTitleStyle(titleView, it.title)
 
                     descriptionView.text = it.explanation
                     descriptionView.typeface = Typeface.createFromAsset(
@@ -151,5 +152,32 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.loadingProcess.visibility = View.GONE
             }
         }
+    }
+
+    private fun setTitleStyle(titleView: TextView, title: String) {
+        val separatorIndex = title.indexOf(":")
+        val spannableString = SpannableString(title)
+
+        titleView.setText(spannableString, TextView.BufferType.SPANNABLE)
+
+        val spannableTitle = titleView.text as Spannable
+
+        spannableTitle.setSpan(
+            ForegroundColorSpan(Color.GRAY),
+            0,
+            separatorIndex,
+            Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+        )
+
+        spannableTitle.setSpan(
+            ForegroundColorSpan(Color.DKGRAY),
+            separatorIndex,
+            title.length,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+
+        titleView.typeface = Typeface.createFromAsset(
+            requireContext().assets, "font/stacker/Stacker-jE03l.ttf"
+        )
     }
 }
