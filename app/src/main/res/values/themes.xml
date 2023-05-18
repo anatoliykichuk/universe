@@ -40,6 +40,10 @@
         </item>
 
     </style>
+    
+    <style name="Splash" parent="Theme.Universe">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 
     <style name="chipStyle">
         <item name="android:layout_width">wrap_content</item>
