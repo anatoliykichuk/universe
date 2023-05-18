@@ -1,8 +1,13 @@
 package com.geekbrains.univerce.ui.main
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.transition.ChangeBounds
 import android.transition.ChangeImageTransform
 import android.transition.TransitionManager
@@ -22,6 +27,7 @@ import com.geekbrains.universe.ui.AppState
 import com.geekbrains.universe.ui.main.PictureOfTheDayViewModel
 import com.geekbrains.universe.ui.utils.QueryDay
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlin.random.Random
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -126,8 +132,8 @@ class PictureOfTheDayFragment : Fragment() {
                 appState.pictureOfTheDay?.let {
                     binding.picture.load(it.getUrlFilled())
 
-                    titleView.text = it.title
-                    descriptionView.text = it.explanation
+                    setTitleStyle(titleView, it.title)
+                    setDescriptionStyle(descriptionView, it.explanation)
                 }
             }
 
@@ -143,5 +149,71 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.loadingProcess.visibility = View.GONE
             }
         }
+    }
+
+    private fun setTitleStyle(titleView: TextView, title: String) {
+        val spannableString = SpannableString(title)
+        titleView.setText(spannableString, TextView.BufferType.SPANNABLE)
+
+        val spannableTitle = titleView.text as Spannable
+        val separatorIndex = title.indexOf(":")
+
+        if (separatorIndex < 0) {
+            spannableTitle.setSpan(
+                ForegroundColorSpan(Color.BLUE),
+                0,
+                title.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
+            return
+        }
+
+        spannableTitle.setSpan(
+            ForegroundColorSpan(Color.GRAY),
+            0,
+            separatorIndex,
+            Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+        )
+
+        spannableTitle.setSpan(
+            ForegroundColorSpan(Color.DKGRAY),
+            separatorIndex,
+            title.length,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+
+        titleView.typeface = Typeface.createFromAsset(
+            requireContext().assets, "font/stacker/Stacker-jE03l.ttf"
+        )
+    }
+
+    private fun setDescriptionStyle(descriptionView: TextView, description: String) {
+        val spannableString = SpannableString(description)
+        descriptionView.setText(spannableString, TextView.BufferType.SPANNABLE)
+
+        val spannableDescription = descriptionView.text as Spannable
+        val stepValue = ((description.length / Random.nextInt(description.length)) as Int)
+
+        var isColorRed = false
+
+        for (rangeCount in description.length downTo 1 step stepValue) {
+            val foregroundColor = ForegroundColorSpan(if (isColorRed) Color.RED else Color.GREEN)
+            var start = rangeCount - stepValue
+
+
+            if (start < 0) {
+                start = 0
+            }
+
+            spannableDescription.setSpan(
+                foregroundColor, start, rangeCount, Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+            )
+
+            isColorRed = !isColorRed
+        }
+
+        descriptionView.typeface = Typeface.createFromAsset(
+            requireContext().assets, "font/gepeste/Gepestev-nRJgO.ttf"
+        )
     }
 }
