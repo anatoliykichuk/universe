@@ -197,19 +197,16 @@ class PictureOfTheDayFragment : Fragment() {
         var isColorRed = false
 
         for (rangeCount in description.length downTo 1 step stepValue) {
-            val start = rangeCount - stepValue
+            val foregroundColor = ForegroundColorSpan(if (isColorRed) Color.RED else Color.GREEN)
+            var start = rangeCount - stepValue
 
-            if (start <= 0) {
-                break
+
+            if (start < 0) {
+                start = 0
             }
 
-            val foregroundColor = ForegroundColorSpan(if (isColorRed) Color.RED else Color.GREEN)
-
             spannableDescription.setSpan(
-                foregroundColor,
-                start,
-                rangeCount,
-                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+                foregroundColor, start, rangeCount, Spannable.SPAN_INCLUSIVE_EXCLUSIVE
             )
 
             isColorRed = !isColorRed
