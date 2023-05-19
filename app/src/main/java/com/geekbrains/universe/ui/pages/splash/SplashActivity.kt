@@ -1,9 +1,8 @@
 package com.geekbrains.universe.ui.pages.splash
 
+import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.universe.databinding.ActivitySplashBinding
@@ -12,8 +11,7 @@ import com.geekbrains.universe.ui.MainActivity
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
-    private val handler = Handler(Looper.getMainLooper())
-    private val delay = 3000L
+
     private val rotateValue = 750f
     private val interpolatorDuration = 10000L
 
@@ -24,16 +22,23 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.splashImage.animate().rotationBy(rotateValue)
-            .setInterpolator(LinearInterpolator()).duration = interpolatorDuration
+            .setInterpolator(LinearInterpolator()).setDuration(interpolatorDuration)
+            .setListener(object : Animator.AnimatorListener {
+                override fun onAnimationEnd(animation: Animator) {
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    finish()
+                }
 
-        handler.postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-            finish()
-        }, delay)
+                override fun onAnimationStart(animation: Animator) {}
+
+                override fun onAnimationCancel(animation: Animator) {}
+
+                override fun onAnimationRepeat(animation: Animator) {}
+
+            })
     }
 
     override fun onDestroy() {
-        handler.removeCallbacksAndMessages(null)
         super.onDestroy()
     }
 }
