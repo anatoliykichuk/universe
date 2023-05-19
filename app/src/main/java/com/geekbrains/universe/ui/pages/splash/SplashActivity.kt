@@ -34,7 +34,6 @@ class SplashActivity : AppCompatActivity() {
                 override fun onAnimationCancel(animation: Animator) {}
 
                 override fun onAnimationRepeat(animation: Animator) {}
-
             })
     }
 }
